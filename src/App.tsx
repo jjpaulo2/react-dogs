@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Container from 'react-bootstrap/Container';
+import BreedsSelect from './components/breedsSelect';
+import BreedPhotos from "./components/breedPhotos";
 
-function App() {
+import './styles/main.css';
+
+
+export default function App() {
+  const [breed, setDogBreed] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="my-5">
+      <BreedsSelect onSelect={setDogBreed}></BreedsSelect>
+      <BreedPhotos breed={breed}></BreedPhotos>
+    </Container>
   );
 }
-
-export default App;
